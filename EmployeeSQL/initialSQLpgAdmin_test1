@@ -1,0 +1,56 @@
+### Had trouble saving the .sql within pgAdmin so saving initial code here:
+
+-- Create the Major Tables from my ERD
+
+CREATE TABLE Departments(
+	dept_no PRIMARY KEY VARCHAR(30),
+	dept_name VARCHAR(30)
+	);
+SELECT *
+FROM Departments
+
+
+CREATE TABLE Titles(
+	title_id PRIMARY KEY VARCHAR(30),
+	title  VARCHAR(30)
+	);
+SELECT *
+FROM Titles
+
+
+CREATE TABLE Employees(
+	emp_no PRIMARY KEY int,
+	emp_title_id VARCHAR(30) FK >- Titles.title_id ?????
+	birth_date date,
+	first_name VARCHAR(30),
+	last_name VARCHAR(30),
+	sex VARCHAR(3),
+	hire_date date
+	);
+SELECT *
+FROM Employees
+
+
+-- Create the Junction Tables from my ERD
+CREATE TABLE Dept_Emp(
+	emp_no int,
+	dept_no VARCHAR(30) FK >- Departments.dept_no
+	);
+SELECT *
+FROM Dept_Emp
+
+
+CREATE TABLE Dept_Manager(
+	dept_no VARCHAR(30) FK >- Departments.dept_no
+	emp_no int FK >- Employees.emp_no
+	);
+SELECT *
+FROM Dept_Manager
+
+
+CREATE TABLE Salaries(
+	emp_no int FK >- Employees.emp_no
+	salary int
+	);
+SELECT *
+FROM Salaries
