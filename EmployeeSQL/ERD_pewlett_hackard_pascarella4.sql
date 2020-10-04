@@ -59,7 +59,9 @@ WHERE dept_name = 'Development'
 OR dept_name = 'Sales'
 
 --8)In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
-SELECT "Employees".last_name
+SELECT "Employees".last_name, COUNT("Employees".last_name) AS "Last Name"
 FROM "Employees"
-COUNT last_name 
+GROUP BY "Employees".last_name
+ORDER BY "Last Name" DESC;
+
 
